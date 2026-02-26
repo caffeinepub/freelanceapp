@@ -1,0 +1,13 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-26T05:32:34.733Z",
+  "summary": "The build request is to publish the app to a live production URL with no specific code requirements or acceptance criteria. The diff shows modifications to backend/main.mo and project_state.json, which appear to be backend logic changes rather than deployment/publishing actions. However, since the build request has no explicit requirements or acceptance criteria, there is nothing formally missing or hallucinated relative to the spec.",
+  "missing_requirements": [],
+  "hallucinated_features": [],
+  "confidence": 0.6,
+  "changed_files": [
+    "backend/main.mo",
+    "project_state.json"
+  ]
+}

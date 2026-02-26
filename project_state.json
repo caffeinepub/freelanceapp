@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "A freelancing app with two modes: one for customers (clients) and one for freelancers.",
+  "architectural_notes": [
+    "Two distinct user roles: Customer and Freelancer, each with their own dashboard and feature set."
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-implement-a-role-selection-onboarding-screen-where-users-choose-to-sign-up-as-a-customer-client-or-a-freelancer-before-accessing-the-app-store-the-selected-role-and-associate-it-with-the-user-s-identity",
+      "title": "Implement a role selection onboarding screen where users choose to sign up as a Customer (client) or a Freelancer before accessing the app. Store the selected role and associate it with the user's identity.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-the-customer-mode-allow-customers-to-post-job-listings-with-a-title-description-budget-and-category-browse-and-manage-their-posted-jobs-view-freelancer-proposals-on-each-job-and-hire-a-freelancer-by-accepting-a-proposal",
+      "title": "Implement the Customer mode: allow customers to post job listings with a title, description, budget, and category; browse and manage their posted jobs; view freelancer proposals on each job; and hire a freelancer by accepting a proposal.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-the-freelancer-mode-allow-freelancers-to-browse-all-open-job-listings-filter-by-category-submit-proposals-with-a-cover-letter-and-proposed-price-and-manage-their-active-and-completed-work",
+      "title": "Implement the Freelancer mode: allow freelancers to browse all open job listings, filter by category, submit proposals (with a cover letter and proposed price), and manage their active and completed work.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-freelancer-profile-that-includes-a-display-name-bio-skills-list-and-hourly-rate-customers-should-be-able-to-view-a-freelancer-s-profile-when-reviewing-proposals",
+      "title": "Implement a freelancer profile that includes a display name, bio, skills list, and hourly rate. Customers should be able to view a freelancer's profile when reviewing proposals.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-design-and-apply-a-cohesive-visual-theme-across-the-entire-app-use-a-clean-professional-aesthetic-suited-for-a-freelancing-marketplace-warm-neutrals-with-amber-teal-accents-strong-typographic-hierarchy-card-based-layouts-for-job-listings-and-clear-role-differentiated-dashboard-styles",
+      "title": "Design and apply a cohesive visual theme across the entire app. Use a clean, professional aesthetic suited for a freelancing marketplace — warm neutrals with amber/teal accents, strong typographic hierarchy, card-based layouts for job listings, and clear role-differentiated dashboard styles.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Customer mode: browse, post jobs, hire freelancers",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Freelancer mode: browse jobs, submit proposals, manage work",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "User role selection (customer or freelancer) during onboarding/signup",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "FreelanceApp",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* Warm neutral palette with amber/teal accents */
+    --background: 0.98 0.008 80;
+    --foreground: 0.18 0.02 60;
+
+    --card: 1 0 0;
+    --card-foreground: 0.18 0.02 60;
+
+    --popover: 1 0 0;
+    --popover-foreground: 0.18 0.02 60;
+
+    /* Amber primary */
+    --primary: 0.72 0.17 60;
+    --primary-foreground: 1 0 0;
+
+    /* Teal secondary */
+    --secondary: 0.55 0.12 195;
+    --secondary-foreground: 1 0 0;
+
+    --muted: 0.94 0.01 80;
+    --muted-foreground: 0.52 0.02 60;
+
+    --accent: 0.94 0.03 80;
+    --accent-foreground: 0.18 0.02 60;
+
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    --border: 0.88 0.015 80;
+    --input: 0.88 0.015 80;
+    --ring: 0.72 0.17 60;
+
+    --chart-1: 0.72 0.17 60;
+    --chart-2: 0.55 0.12 195;
+    --chart-3: 0.65 0.15 145;
+    --chart-4: 0.75 0.18 30;
+    --chart-5: 0.60 0.14 270;
+
+    --sidebar: 0.96 0.01 80;
+    --sidebar-foreground: 0.18 0.02 60;
+    --sidebar-primary: 0.72 0.17 60;
+    --sidebar-primary-foreground: 1 0 0;
+    --sidebar-accent: 0.92 0.02 80;
+    --sidebar-accent-foreground: 0.18 0.02 60;
+    --sidebar-border: 0.88 0.015 80;
+    --sidebar-ring: 0.72 0.17 60;
+
+    /* Custom tokens */
+    --amber: 0.72 0.17 60;
+    --amber-light: 0.92 0.08 80;
+    --teal: 0.55 0.12 195;
+    --teal-light: 0.90 0.06 195;
+    --warm-bg: 0.97 0.01 80;
+  }
+
+  .dark {
+    --background: 0.14 0.02 60;
+    --foreground: 0.95 0.01 80;
+
+    --card: 0.19 0.02 60;
+    --card-foreground: 0.95 0.01 80;
+
+    --popover: 0.22 0.02 60;
+    --popover-foreground: 0.95 0.01 80;
+
+    --primary: 0.78 0.17 60;
+    --primary-foreground: 0.12 0.02 60;
+
+    --secondary: 0.60 0.12 195;
+    --secondary-foreground: 0.12 0.02 60;
+
+    --muted: 0.24 0.02 60;
+    --muted-foreground: 0.65 0.02 80;
+
+    --accent: 0.26 0.02 60;
+    --accent-foreground: 0.95 0.01 80;
+
+    --destructive: 0.704 0.191 22.216;
+    --destructive-foreground: 0.95 0.01 80;
+
+    --border: 1 0 0 / 10%;
+    --input: 1 0 0 / 15%;
+    --ring: 0.78 0.17 60;
+
+    --sidebar: 0.19 0.02 60;
+    --sidebar-foreground: 0.95 0.01 80;
+    --sidebar-primary: 0.78 0.17 60;
+    --sidebar-primary-foreground: 0.12 0.02 60;
+    --sidebar-accent: 0.24 0.02 60;
+    --sidebar-accent-foreground: 0.95 0.01 80;
+    --sidebar-border: 1 0 0 / 10%;
+    --sidebar-ring: 0.78 0.17 60;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Sora', sans-serif;
+  }
+}
+
+@layer utilities {
+  .gradient-amber {
+    background: linear-gradient(135deg, oklch(0.72 0.17 60), oklch(0.78 0.18 45));
+  }
+  .gradient-teal {
+    background: linear-gradient(135deg, oklch(0.55 0.12 195), oklch(0.60 0.13 180));
+  }
+  .gradient-hero {
+    background: linear-gradient(135deg, oklch(0.18 0.04 60) 0%, oklch(0.22 0.05 195) 100%);
+  }
+  .card-hover {
+    @apply transition-all duration-200 hover:shadow-md hover:-translate-y-0.5;
+  }
+}

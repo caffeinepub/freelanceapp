@@ -1,0 +1,17 @@
+{
+  "kind": "build_request",
+  "title": "Publish app to live production URL",
+  "projectName": "FreelanceApp",
+  "priority": "normal",
+  "requirements": [],
+  "constraints": [],
+  "nonGoals": [
+    "Adding new features",
+    "Changing existing functionality",
+    "Modifying backend or frontend code"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}
