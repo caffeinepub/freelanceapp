@@ -1,12 +1,14 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 5,
+  "projectStateVersion": 7,
   "summary": "A freelancing app with two modes: one for customers (clients) and one for freelancers.",
   "architectural_notes": [
     "Two distinct user roles: Customer and Freelancer, each with their own dashboard and feature set."
   ],
-  "known_issues": [],
-  "isFixRequest": false,
+  "known_issues": [
+    "Role selection persists incorrectly when user tries to continue as a different customer or freelancer role — previously chosen role is shown instead of allowing fresh selection."
+  ],
+  "isFixRequest": true,
   "existing_features": [
     {
       "id": "feature-implement-a-role-selection-onboarding-screen-where-users-choose-to-sign-up-as-a-customer-client-or-a-freelancer-before-accessing-the-app-store-the-selected-role-and-associate-it-with-the-user-s-identity",
@@ -47,6 +49,14 @@
         "REQ-5"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-fix-the-roleselectionpage-so-that-it-does-not-pre-populate-or-lock-in-a-previously-chosen-role-when-an-authenticated-user-reaches-the-role-selection-screen-they-must-be-presented-with-a-fresh-unselected-choice-between-customer-and-freelancer-and-the-previously-stored-role-must-not-influence-or-pre-select-the-ui-state",
+      "title": "Fix the RoleSelectionPage so that it does not pre-populate or lock in a previously chosen role. When an authenticated user reaches the role selection screen, they must be presented with a fresh, unselected choice between Customer and Freelancer, and the previously stored role must not influence or pre-select the UI state.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -66,6 +76,14 @@
       "id": "AR-3",
       "summary": "User role selection (customer or freelancer) during onboarding/signup",
       "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Fix the LoginPage redirect logic so that users who already have a role assigned in the backend are sent directly to their role-appropriate dashboard, bypassing the role selection page entirely. The role selection page should only be shown to users who have no role stored yet.",
+      "reqIds": [
+        "REQ-7"
+      ],
       "status": "pending"
     }
   ],

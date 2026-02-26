@@ -1,14 +1,56 @@
 {
   "kind": "build_request",
-  "title": "Publish app to live production URL",
-  "projectName": "FreelanceApp",
-  "priority": "normal",
-  "requirements": [],
-  "constraints": [],
+  "title": "Fix role selection persisting incorrectly on role selection page",
+  "priority": "high",
+  "requirements": [
+    {
+      "id": "REQ-6",
+      "text": "Fix the RoleSelectionPage so that it does not pre-populate or lock in a previously chosen role. When an authenticated user reaches the role selection screen, they must be presented with a fresh, unselected choice between Customer and Freelancer, and the previously stored role must not influence or pre-select the UI state.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-latest"
+        ],
+        "quotes": [
+          "Why role already choosen is coming when continuing as customer or freelancer"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Navigating to the role selection page never shows a pre-selected or highlighted role from a previous session.",
+        "Both 'Customer' and 'Freelancer' options are rendered in an equal, unselected state when the page loads.",
+        "The user must actively click one of the roles before the confirm/continue action becomes enabled.",
+        "After selecting a role and confirming, the user is redirected to the correct dashboard.",
+        "If a user already has a role stored in the backend, they should be redirected away from the role selection page directly to their dashboard (not shown the role selection page with their old role pre-filled)."
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Fix the LoginPage redirect logic so that users who already have a role assigned in the backend are sent directly to their role-appropriate dashboard, bypassing the role selection page entirely. The role selection page should only be shown to users who have no role stored yet.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-latest"
+        ],
+        "quotes": [
+          "Why role already choosen is coming when continuing as customer or freelancer"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A logged-in user with an existing 'customer' role is redirected to the customer dashboard, not the role selection page.",
+        "A logged-in user with an existing 'freelancer' role is redirected to the freelancer dashboard, not the role selection page.",
+        "Only users with no stored role profile are shown the role selection onboarding page.",
+        "No stale role state from localStorage, sessionStorage, or component state causes incorrect UI behavior on the role selection page."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not modify files under frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or frontend/src/components/ui.",
+    "All backend role storage logic must remain in backend/main.mo."
+  ],
   "nonGoals": [
-    "Adding new features",
-    "Changing existing functionality",
-    "Modifying backend or frontend code"
+    "Allowing users to change their role after it has been set.",
+    "Adding new roles beyond Customer and Freelancer.",
+    "Modifying the backend role assignment or storage logic."
   ],
   "imageRequirements": {
     "required": [],

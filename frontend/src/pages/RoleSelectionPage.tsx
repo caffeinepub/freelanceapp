@@ -12,22 +12,28 @@ export default function RoleSelectionPage() {
   const router = useRouter();
   const { data: userProfile, isLoading, isFetched } = useGetCallerUserProfile();
   const chooseRole = useChooseRole();
+  // Always start with null — never pre-populate from any cached/stored state
   const [selectedRole, setSelectedRole] = useState<'customer' | 'freelancer' | null>(null);
   const isAuthenticated = !!identity;
 
+  // Redirect unauthenticated users to login
   useEffect(() => {
     if (!isAuthenticated) {
       router.navigate({ to: '/login' });
-      return;
     }
-    if (isFetched && userProfile !== null) {
-      if (userProfile?.appRole === AppRole.customer) {
+  }, [isAuthenticated, router]);
+
+  // Redirect users who already have a role to their dashboard
+  useEffect(() => {
+    if (!isFetched) return;
+    if (userProfile !== null && userProfile !== undefined) {
+      if (userProfile.appRole === AppRole.customer) {
         router.navigate({ to: '/customer-dashboard' });
       } else {
         router.navigate({ to: '/freelancer-dashboard' });
       }
     }
-  }, [isAuthenticated, userProfile, isFetched, router]);
+  }, [userProfile, isFetched, router]);
 
   const handleContinue = async () => {
     if (!selectedRole) return;
@@ -45,7 +51,25 @@ export default function RoleSelectionPage() {
     }
   };
 
-  if (isLoading) {
+  // Show loading spinner while:
+  // 1. Profile is still loading
+  // 2. Profile is fetched and already has a role (redirect is in progress)
+  const isRedirecting = isFetched && userProfile !== null && userProfile !== undefined;
+  if (isLoading || isRedirecting) {
+    return (
+      <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-muted-foreground">
+            {isRedirecting ? 'Redirecting to your dashboard...' : 'Loading...'}
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  // Only render the role selection UI when we've confirmed the user has no role yet
+  if (!isFetched) {
     return (
       <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center">
         <div className="text-center">

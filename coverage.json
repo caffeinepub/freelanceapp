@@ -1,22 +1,43 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-26T05:32:34.735Z",
+  "generatedAt": "2026-02-26T05:49:00.452Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 0,
-    "implemented": 0,
-    "items": []
+    "total": 2,
+    "implemented": 1,
+    "items": [
+      {
+        "id": "REQ-6",
+        "summary": "Fix the RoleSelectionPage so that it does not pre-populate or lock in a previously chosen role. When an authenticated user reaches the role selection screen, they must be presented with a fresh, unselected choice between Customer and Freelancer, and the previously stored role must not influence or pre-select the UI state.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/RoleSelectionPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/RoleSelectionPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-7",
+        "summary": "Fix the LoginPage redirect logic so that users who already have a role assigned in the backend are sent directly to their role-appropriate dashboard, bypassing the role selection page entirely. The role selection page should only be shown to users who have no role stored yet.",
+        "status": "missing",
+        "plannedFiles": [
+          "frontend/src/pages/LoginPage.tsx"
+        ],
+        "matchedFiles": []
+      }
+    ]
   },
   "changedFiles": [
-    "backend/main.mo",
     "build-request.json",
-    "build-template/README.md",
     "feature_evidence.json",
+    "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
+    "frontend/src/pages/RoleSelectionPage.tsx",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

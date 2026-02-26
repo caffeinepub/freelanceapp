@@ -1,6 +1,42 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Publish app to live production URL",
-  "requirements": []
+  "title": "Fix role selection persisting incorrectly on role selection page",
+  "requirements": [
+    {
+      "id": "REQ-6",
+      "summary": "Fix the RoleSelectionPage so that it does not pre-populate or lock in a previously chosen role",
+      "acceptanceCriteria": [
+        "Navigating to the role selection page never shows a pre-selected or highlighted role from a previous session.",
+        "Both 'Customer' and 'Freelancer' options are rendered in an equal, unselected state when the page loads.",
+        "The user must actively click one of the roles before the confirm/continue action becomes enabled.",
+        "After selecting a role and confirming, the user is redirected to the correct dashboard.",
+        "If a user already has a role stored in the backend, they should be redirected away from the role selection page directly to their dashboard (not shown the role selection page with their old role pre-filled)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/RoleSelectionPage.tsx",
+          "operation": "modify",
+          "description": "Ensure the component does not read or use any stale role state from props, localStorage, sessionStorage, or cached queries when rendering the role selection UI. Initialize the local selected role state to null on every mount, guaranteeing both role options render in an unselected state. Add a redirect guard that checks the user's profile on mount; if a role is already set in the backend (userProfile.appRole is customer or freelancer), immediately redirect the user to the appropriate dashboard without rendering the selection UI. Disable the continue button until a role is actively selected during the current session."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Fix the LoginPage redirect logic so that users who already have a role assigned in the backend are sent directly to their role-appropriate dashboard",
+      "acceptanceCriteria": [
+        "A logged-in user with an existing 'customer' role is redirected to the customer dashboard, not the role selection page.",
+        "A logged-in user with an existing 'freelancer' role is redirected to the freelancer dashboard, not the role selection page.",
+        "Only users with no stored role profile are shown the role selection onboarding page.",
+        "No stale role state from localStorage, sessionStorage, or component state causes incorrect UI behavior on the role selection page."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/LoginPage.tsx",
+          "operation": "modify",
+          "description": "Update the redirect logic after successful authentication to check the user's profile and appRole from the backend. If userProfile.appRole is 'customer', redirect to /customer-dashboard. If userProfile.appRole is 'freelancer', redirect to /freelancer-dashboard. Only redirect to /role-selection if userProfile is null or userProfile.appRole is not set. Ensure this check uses the latest data from the backend query without relying on cached or stale state from browser storage."
+        }
+      ]
+    }
+  ]
 }
